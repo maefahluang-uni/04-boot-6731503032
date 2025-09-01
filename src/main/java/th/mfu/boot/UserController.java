@@ -25,7 +25,7 @@ public class UserController {
         }
 
         users.put(user.getUsername(), user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
+        return ResponseEntity.status(HttpStatus.OK).body("User registered successfully");
     }
 
     @GetMapping
@@ -33,7 +33,7 @@ public class UserController {
          return ResponseEntity.ok(users.values());
          
     }
-       @GetMapping("/{username}")
+    @GetMapping("/{username}")
     public ResponseEntity<User> getUser(@PathVariable String username) {
         User user = users.get(username);
         if (user == null) {
@@ -41,5 +41,4 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
-
     }
